@@ -183,8 +183,30 @@ py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation, use the environment's Python directly
-with the commands below. No execution-policy change is required.
+If PowerShell reports that running scripts is disabled, activation is
+optional. You can continue to Step 4 and use the environment's Python
+directly without changing the execution policy.
+
+Alternatively, to activate the environment in the current PowerShell
+session, run these commands one at a time:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+If a confirmation prompt appears, enter `Y` and press Enter.
+The policy change applies only to this PowerShell session and expires
+when it closes. It does not permanently change your execution policy.
+
+If an organizational policy still blocks activation, use the direct
+Python commands in Step 4.
+
+These commands are for PowerShell only. For Command Prompt, use the
+Windows CMD alternative below.
+
+Reference:
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies
 
 ### 4. Install packages and run the analysis
 
